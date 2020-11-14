@@ -1,13 +1,13 @@
 [package]
 name = "fnmatch-sys"
 version = "1.0.0"
-authors = ["Ian Wahbe <ian@wahbe.com>"]
+authors = ["Ian Wahbe <github @iwahbe>"]
 edition = "2018"
 links = "fnmatch"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
+description = "Rust binding for the C header fnmatch.h"
+readme = "README.md"
+repository = "https://github.com/iwahbe/fnmatch-sys"
+license = "MIT OR Apache-2.0"
 
 [build-dependencies]
 cc = "1.0"

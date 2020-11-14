@@ -33,5 +33,14 @@ extern "C" {
     ///
     /// The flags argument modifies the behavior; it is the bitwise OR of zero
     /// or more of the following flags:
+    ///
+    ///     `FNM_NOMATCH`
+    ///     `FNM_NOESCAPE`
+    ///     `FNM_PATHNAME`
+    ///     `FNM_PERIOD`
+    ///
+    /// RETURN VALUE
+    /// Zero if string matches pattern, FNM_NOMATCH if there is no match or
+    /// another nonzero value if there is an error.
     pub fn fnmatch(pattern: *const c_char, string: *const c_char, flags: c_int) -> c_int;
 }
