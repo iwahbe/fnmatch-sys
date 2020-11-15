@@ -34,7 +34,6 @@ extern "C" {
     /// The flags argument modifies the behavior; it is the bitwise OR of zero
     /// or more of the following flags:
     ///
-    ///     `FNM_NOMATCH`
     ///     `FNM_NOESCAPE`
     ///     `FNM_PATHNAME`
     ///     `FNM_PERIOD`
