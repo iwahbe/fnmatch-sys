@@ -28,17 +28,22 @@ extern "C" {
     /// Period must be matched by period.
     #[link_name = "fnm_period"]
     pub static FNM_PERIOD: c_int;
+    /// A GNU extension: the pattern is matched ignoring a case
+    #[link_name = "fnm_casefold"]
+    pub static FNM_CASEFOLD: c_int;
     /// The `fnmatch()` function checks whether the string argument matches the
     /// pattern argument, which is a shell wildcard pattern (see glob(7)).
     ///
-    /// The flags argument modifies the behavior; it is the bitwise OR of zero
+    /// The `flags` argument modifies the behavior; it is the bitwise OR of zero
     /// or more of the following flags:
     ///
-    ///     `FNM_NOESCAPE`
-    ///     `FNM_PATHNAME`
-    ///     `FNM_PERIOD`
+    /// - `FNM_NOESCAPE`
+    /// - `FNM_PATHNAME`
+    /// - `FNM_PERIOD`
+    /// - `FNM_CASEFOLD`
     ///
-    /// RETURN VALUE
+    /// # Return value
+    ///
     /// Zero if string matches pattern, FNM_NOMATCH if there is no match or
     /// another nonzero value if there is an error.
     pub fn fnmatch(pattern: *const c_char, string: *const c_char, flags: c_int) -> c_int;

@@ -19,5 +19,7 @@ provided.
 
     pub static FNM_PERIOD: c_int; // Period must be matched by period.
 
+    pub static FNM_CASEFOLD: c_int; // A GNU extension: the pattern is matched ignoring a case.
+
     pub fn fnmatch(pattern: *const c_char, string: *const c_char, flags: c_int) -> c_int;
 ```
