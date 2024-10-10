@@ -7,9 +7,12 @@ mod tests {
         unsafe { assert!(FNM_NOESCAPE > 0 || FNM_NOESCAPE <= 0) };
         unsafe { assert!(FNM_PATHNAME > 0 || FNM_PATHNAME <= 0) };
         unsafe { assert!(FNM_PERIOD > 0 || FNM_PERIOD <= 0) };
-        #[cfg(feature = "gnu")]
+        #[cfg(feature = "casefold")]
         unsafe {
-            assert!(FNM_CASEFOLD > 0 || FNM_CASEFOLD <= 0);
+            assert!(FNM_CASEFOLD > 0 || FNM_CASEFOLD <= 0)
+        };
+        #[cfg(feature = "extmatch")]
+        unsafe {
             assert!(FNM_EXTMATCH > 0 || FNM_EXTMATCH <= 0);
         }
         let _ = |pattern: *const c_char, string: *const c_char, flags: c_int| unsafe {
@@ -42,8 +45,8 @@ extern "C" {
     /// - `FNM_NOESCAPE`
     /// - `FNM_PATHNAME`
     /// - `FNM_PERIOD`
-    /// - `FNM_CASEFOLD` (feature = "gnu")
-    /// - `FNM_EXTMATCH` (feature = "gnu")
+    /// - `FNM_CASEFOLD` (feature = "casefold")
+    /// - `FNM_EXTMATCH` (feature = "extmatch")
     ///
     /// RETURN VALUE
     /// Zero if string matches pattern, `FNM_NOMATCH` if there is no match or
@@ -51,12 +54,15 @@ extern "C" {
     pub fn fnmatch(pattern: *const c_char, string: *const c_char, flags: c_int) -> c_int;
 }
 
-// GNU Extensions to fnmatch.h
-#[cfg(feature = "gnu")]
+#[cfg(feature = "casefold")]
 extern "C" {
     /// Case insensitive search.
     #[link_name = "fnm_casefold"]
     pub static FNM_CASEFOLD: c_int;
+}
+
+#[cfg(feature = "extmatch")]
+extern "C" {
     /// If this flag (a GNU extension) is set, extended patterns are supported, as
     /// introduced by 'ksh' and now supported by other shells.  The extended format is as
     /// follows, with pattern-list being a '|' separated list of patterns.

@@ -11,7 +11,10 @@ license = "MIT OR Apache-2.0"
 
 [features]
 default = []
-gnu = []
+maybe-casefold = [ "casefold" ]
+casefold = []
+maybe-extmatch = [ "extmatch" ]
+extmatch = []
 
 [build-dependencies]
 cc = "1.0"
