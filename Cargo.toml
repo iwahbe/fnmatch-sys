@@ -2,12 +2,19 @@
 name = "fnmatch-sys"
 version = "1.0.1"
 authors = ["Ian Wahbe <github @iwahbe>"]
-edition = "2018"
+edition = "2021"
 links = "fnmatch"
 description = "Rust binding for the C header fnmatch.h"
 readme = "README.md"
 repository = "https://github.com/iwahbe/fnmatch-sys"
 license = "MIT OR Apache-2.0"
+
+[features]
+default = []
+maybe-casefold = [ "casefold" ]
+casefold = []
+maybe-extmatch = [ "extmatch" ]
+extmatch = []
 
 [build-dependencies]
 cc = "1.0"
